@@ -1,0 +1,38 @@
+:root {
+  --color-purple: #b4a4f0;
+  --color-lime: #97d77b;
+  --color-blue: #c1e5f9;
+  --color-pink: #f787c9;
+}
+
+.text-brand {
+  color: var(--color-pink);
+}
+
+.bg-purple {
+  background-color: var(--color-purple);
+}
+
+.bg-lime {
+  background-color: var(--color-lime);
+}
+
+.bg-blue {
+  background-color: var(--color-blue);
+}
+
+.text-purple {
+  color: var(--color-purple);
+}
+
+.text-lime {
+  color: var(--color-lime);
+}
+
+.text-blue {
+  color: var(--color-blue);
+}
+
+.text-pink {
+  color: var(--color-pink);
+}

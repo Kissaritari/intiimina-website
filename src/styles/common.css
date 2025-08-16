@@ -1,0 +1,54 @@
+@layer components {
+  /* Layout containers */
+  .container-narrow {
+    @apply w-full max-w-3xl mx-auto;
+  }
+
+  .container-wide {
+    @apply w-full max-w-4xl mx-auto;
+  }
+
+  /* Section styles */
+  .section-padding {
+    @apply px-4 py-16;
+  }
+
+  .section-spacing {
+    @apply gap-20;
+  }
+
+  /* Typography */
+  .heading-primary {
+    @apply text-5xl sm:text-7xl font-bold tracking-tight text-gray-800;
+  }
+
+  .heading-secondary {
+    @apply text-4xl sm:text-5xl font-extrabold mb-2;
+  }
+
+  .heading-tertiary {
+    @apply text-2xl font-bold mb-2 text-gray-800;
+  }
+
+  .text-body {
+    @apply text-gray-700;
+  }
+
+  .text-body-large {
+    @apply text-xl sm:text-2xl text-gray-700;
+  }
+
+  /* Backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-[#b4a4f0] via-[#c1e5f9] to-[#97d77b];
+  }
+
+  /* Common patterns */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col items-center;
+  }
+}
