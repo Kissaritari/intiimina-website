@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   },
 };
 import Header from "@/components/Header";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import {
@@ -126,13 +127,20 @@ export default function Home() {
           </Button>
         </section>
       </main>
-      <section>
-        <p>Jäsenyydet</p>
-        <ul className="list-disc pl-6">
-          <li>
-            <
-          </li>
-        </ul>
+      {/* Memberships / Logos */}
+      <section className="container-narrow text-center mt-12 flex-col gap-4">
+        <h3 className="heading-tertiary">Jäsenyydet</h3>
+
+        <div className="flex items-center justify-center mt-4">
+          {/* Use next/image for optimized loading; image lives in /public */}
+          <Image
+            src="/yrittajatLogo.png"
+            alt="Yrittäjät Logo"
+            width={240}
+            height={80}
+            className="object-contain"
+          />
+        </div>
       </section>
       <Footer />
     </div>
