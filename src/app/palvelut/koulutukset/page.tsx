@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import Link from 'next/link';
 
 export default function Koulutukset() {
   return (
@@ -19,8 +20,11 @@ export default function Koulutukset() {
           </p>
 
           <p className="text-lg mb-6">
-            Katso lisää substanssiosaamisestani ansioluettelostani (linkki
-            ansioluetteloon).
+            Katso lisää substanssiosaamisestani{' '}
+            <Link href="/mico/cv" className="text-[#b4a4f0] hover:underline">
+              ansioluettelostani
+            </Link>
+            .
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">

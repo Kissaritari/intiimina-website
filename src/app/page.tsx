@@ -4,16 +4,18 @@ import Button from "@/components/Button";
 
 export const metadata: Metadata = {
   title: "Intiiminä koulutus ja konsultaatio",
-  description: "Tarjoamme ammattimaista seksuaalineuvontaa, koulutusta ja konsultaatiota - rohkeasti, lempeästi ja inhimillisesti.",
+  description:
+    "Tarjoamme ammattimaista seksuaalineuvontaa, koulutusta ja konsultaatiota - rohkeasti, lempeästi ja inhimillisesti.",
   openGraph: {
     title: "Intiiminä koulutus ja konsultaatio",
-    description: "Tarjoamme ammattimaista seksuaalineuvontaa, koulutusta ja konsultaatiota - rohkeasti, lempeästi ja inhimillisesti.",
+    description:
+      "Tarjoamme ammattimaista seksuaalineuvontaa, koulutusta ja konsultaatiota - rohkeasti, lempeästi ja inhimillisesti.",
     images: [
       {
-        url: '/og-image.jpg',
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: 'Intiiminä',
+        alt: "Intiiminä",
       },
     ],
   },
@@ -42,9 +44,7 @@ export default function Home() {
             <p className="text-body-large max-w-2xl mx-auto mb-8 text-shadow-2xs">
               Rohkeasti, lempeästi ja inhimillisesti.
             </p>
-            <Button href="#contact">
-              Ota yhteyttä
-            </Button>
+            <Button href="#contact">Ota yhteyttä</Button>
           </div>
         </div>
       </div>
@@ -52,33 +52,25 @@ export default function Home() {
       <Header />
 
       <main className="flex-1 flex-col-center section-padding section-spacing">
-     
-
         {/* About Section */}
         <section
           id="about"
           className="container-narrow text-center flex-col gap-4"
         >
           <h3 className="heading-tertiary">Tietoa</h3>
-          <p className="text-body">
-            Laajempi tietojuttu, ehkä kuva / kuvia.
-          </p>
+          <p className="text-body">Laajempi tietojuttu, ehkä kuva / kuvia.</p>
         </section>
 
         {/* Services Section */}
-        <section
-          id="services"
-          className="container-wide flex-col gap-6"
-        >
-          <h3 className="heading-tertiary text-center">
-            Palvelut
-          </h3>
+        <section id="services" className="container-wide flex-col gap-6">
+          <h3 className="heading-tertiary text-center">Palvelut</h3>
           <Carousel opts={{ loop: true }} className="w-full max-w-4xl mx-auto">
             <CarouselContent>
               <CarouselItem>
                 <Card title="Konsultointi">
                   <p className="text-gray-600">
-                    Tarjoan räätälöityjä konsultointipalveluita eri toimialoille.
+                    Tarjoan räätälöityjä konsultointipalveluita eri
+                    toimialoille.
                   </p>
                 </Card>
               </CarouselItem>
@@ -112,15 +104,11 @@ export default function Home() {
 
         {/* Blog Section Link */}
         <section className="container-narrow text-center mt-8">
-          <h3 className="heading-tertiary">
-            Blogi
-          </h3>
+          <h3 className="heading-tertiary">Blogi</h3>
           <p className="text-body mb-4">
             Lue ajatuksiamme, vinkkejä ja tarinoita työstämme.
           </p>
-          <Button href="/blog">
-            Siirry blogiin
-          </Button>
+          <Button href="/blog">Siirry blogiin</Button>
         </section>
 
         {/* Contact Section */}
@@ -138,7 +126,14 @@ export default function Home() {
           </Button>
         </section>
       </main>
-
+      <section>
+        <p>Jäsenyydet</p>
+        <ul className="list-disc pl-6">
+          <li>
+            <
+          </li>
+        </ul>
+      </section>
       <Footer />
     </div>
   );
