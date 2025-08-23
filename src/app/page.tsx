@@ -23,7 +23,6 @@ export const metadata: Metadata = {
 import Header from "@/components/Header";
 import Image from "next/image";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 import {
   Carousel,
   CarouselContent,

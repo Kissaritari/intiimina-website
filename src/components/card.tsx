@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 type CardProps = {
     title: string;
@@ -20,11 +21,14 @@ const Card: React.FC<CardProps> = ({ title, description, imageUrl, children }) =
         }}
     >
         {imageUrl && (
-            <img
-                src={imageUrl}
-                alt={title}
-                style={{ width: '100%', borderRadius: '6px 6px 0 0', marginBottom: 16 }}
-            />
+            <div style={{ position: 'relative', width: '100%', height: 0, paddingBottom: '56.25%', borderRadius: '6px 6px 0 0', overflow: 'hidden', marginBottom: 16 }}>
+                <Image
+                    src={imageUrl}
+                    alt={title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                />
+            </div>
         )}
         <h3 style={{ margin: '0 0 12px 0' }}>{title}</h3>
         {description && <p style={{ margin: '0 0 12px 0', color: '#555' }}>{description}</p>}

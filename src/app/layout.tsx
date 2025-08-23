@@ -34,7 +34,8 @@ export const metadata: Metadata = {
     description: 'Ohjausta, neuvontaa ja asiantuntijuutta  - rohkeasti, lempeästi ja inhimillisesti',
     images: [
       {
-        url: '/og-image.jpg',
+        // fallback to an existing public asset; replace with dedicated OG image when available
+        url: '/yrittajatLogo.png',
         width: 1200,
         height: 630,
         alt: 'Intiimina - Ohjausta ja neuvontaa',
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Intiimina',
     description: 'Ohjausta, neuvontaa ja asiantuntijuutta - rohkeasti, lempeästi ja inhimillisesti',
-    images: ['/og-image.jpg'],
+  images: ['/yrittajatLogo.png'],
   },
   robots: {
     index: true,
