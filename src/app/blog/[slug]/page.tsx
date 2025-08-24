@@ -6,7 +6,9 @@ import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 
 type Props = {
-  params: { slug: string }
+  // Next's generated types may expect `params` to be a Promise (see .next/types/...)
+  // declare it as a Promise so the component's param type satisfies Next's generated constraint.
+  params: Promise<{ slug: string }>
 }
 
 type Post = {
@@ -33,7 +35,8 @@ async function getPostBySlug(slug: string): Promise<Post | null> {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const post = await getPostBySlug(params.slug)
+  const resolved = await params
+  const post = await getPostBySlug(resolved.slug)
   if (!post) return {}
 
   const imageUrl = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).auto('format').url() : '/yrittajatLogo.png'
@@ -54,13 +57,14 @@ export async function generateMetadata({ params }: Props) {
       ],
     },
     alternates: {
-      canonical: `https://intiimina.fi/blog/${params.slug}`,
+      canonical: `https://intiimina.fi/blog/${resolved.slug}`,
     },
   }
 }
 
 export default async function PostPage({ params }: Props) {
-  const post = await getPostBySlug(params.slug)
+  const resolved = await params
+  const post = await getPostBySlug(resolved.slug)
 
   if (!post) {
     return (

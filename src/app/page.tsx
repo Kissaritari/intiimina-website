@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import Card from "@/components/card";
 import Button from "@/components/Button";
+import { getPageBySlug, renderPortableText } from '@/sanity/lib/getPage'
 
+// Metadata can be static or built from Sanity; we keep a default here.
 export const metadata: Metadata = {
   title: "Intiiminä koulutus ja konsultaatio",
   description:
@@ -31,7 +33,16 @@ import {
   CarouselNext,
 } from "@/components/carousel";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch the 'home' page document from Sanity. Assumes a `page` type with slug 'home'.
+  const page = await getPageBySlug('home')
+
+  const heroTitle = page?.heroTitle || null
+  const heroText = page?.heroText || null
+  const services = page?.services || []
+  const blogIntro = page?.blogIntro || null
+  const contactIntro = page?.contactIntro || null
+
   return (
     <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
       {/* Hero Section */}
@@ -39,10 +50,14 @@ export default function Home() {
         <div className="absolute inset-0 flex-center">
           <div className="container-wide text-center px-4">
             <h1 className="heading-primary mb-6">
-              Intiiminä koulutus ja konsultaatio
+              {heroTitle || (
+                <>Intiiminä koulutus ja konsultaatio</>
+              )}
             </h1>
             <p className="text-body-large max-w-2xl mx-auto mb-8 text-shadow-2xs">
-              Rohkeasti, lempeästi ja inhimillisesti.
+              {heroText || (
+                <>Rohkeasti, lempeästi ja inhimillisesti.</>
+              )}
             </p>
             <Button href="#contact">Ota yhteyttä</Button>
           </div>
@@ -53,6 +68,7 @@ export default function Home() {
 
       <main className="flex-1 flex-col-center section-padding section-spacing">
         {/* About Section */}
+      {  /*
         <section
           id="about"
           className="container-narrow text-center flex-col gap-4"
@@ -60,42 +76,57 @@ export default function Home() {
           <h3 className="heading-tertiary">Tietoa</h3>
           <p className="text-body">Laajempi tietojuttu, ehkä kuva / kuvia.</p>
         </section>
+      */}
 
         {/* Services Section */}
         <section id="services" className="container-wide flex-col gap-6">
           <h3 className="heading-tertiary text-center">Palvelut</h3>
           <Carousel opts={{ loop: true }} className="w-full max-w-4xl mx-auto">
             <CarouselContent>
-              <CarouselItem>
-                <Card title="Konsultointi">
-                  <p className="text-gray-600">
-                    Tarjoan räätälöityjä konsultointipalveluita eri
-                    toimialoille.
-                  </p>
-                </Card>
-              </CarouselItem>
-              <CarouselItem>
-                <Card title="Koulutus">
-                  <p className="text-gray-600">
-                    Tarjoan monipuolisia koulutuspalveluita organisaatioille ja
-                    yksityishenkilöille.
-                  </p>
-                </Card>
-              </CarouselItem>
-              <CarouselItem>
-                <Card title="Seksuaalineuvonta">
-                  <p className="text-gray-600">
-                    Ammattimaista seksuaalineuvontaa yksilöille ja pareille.
-                  </p>
-                </Card>
-              </CarouselItem>
-              <CarouselItem>
-                <Card title="Työnohjaus">
-                  <p className="text-gray-600">
-                    Työnohjauspalvelut ammattilaisille ja työyhteisöille.
-                  </p>
-                </Card>
-              </CarouselItem>
+              {services.length > 0 ? (
+                services.map((s: any, idx: number) => (
+                  <CarouselItem key={idx}>
+                    <Card title={s.title}>
+                      {s.description ? (
+                        <div className="text-gray-600">{renderPortableText(s.description)}</div>
+                      ) : null}
+                    </Card>
+                  </CarouselItem>
+                ))
+              ) : (
+                <>
+                  <CarouselItem>
+                    <Card title="Konsultointi">
+                      <p className="text-gray-600">
+                        Tarjoan räätälöityjä konsultointipalveluita eri
+                        toimialoille.
+                      </p>
+                    </Card>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <Card title="Koulutus">
+                      <p className="text-gray-600">
+                        Tarjoan monipuolisia koulutuspalveluita organisaatioille ja
+                        yksityishenkilöille.
+                      </p>
+                    </Card>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <Card title="Seksuaalineuvonta">
+                      <p className="text-gray-600">
+                        Ammattimaista seksuaalineuvontaa yksilöille ja pareille.
+                      </p>
+                    </Card>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <Card title="Työnohjaus">
+                      <p className="text-gray-600">
+                        Työnohjauspalvelut ammattilaisille ja työyhteisöille.
+                      </p>
+                    </Card>
+                  </CarouselItem>
+                </>
+              )}
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />
@@ -106,7 +137,7 @@ export default function Home() {
         <section className="container-narrow text-center mt-8">
           <h3 className="heading-tertiary">Blogi</h3>
           <p className="text-body mb-4">
-            Lue ajatuksiamme, vinkkejä ja tarinoita työstämme.
+            {blogIntro || 'Lue ajatuksiani ja tarinoita työstäni.'}
           </p>
           <Button href="/blog">Siirry blogiin</Button>
         </section>
@@ -118,8 +149,7 @@ export default function Home() {
         >
           <h3 className="heading-tertiary">Ota yhteyttä</h3>
           <p className="text-body">
-            Haluatko keskustella palveluistamme? Ota yhteyttä maksuttomaan
-            alkukeskusteluun.
+            {contactIntro || 'Haluatko keskustella palveluistani? Ota yhteyttä.'}
           </p>
           <Button href="mailto:info@intiimina.com" external>
             Lähetä sähköpostia
