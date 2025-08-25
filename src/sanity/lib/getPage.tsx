@@ -4,8 +4,19 @@ import { client } from './client'
 type SanityBlock = any
 
 export async function getPageBySlug(slug: string) {
-  const query = `*[_type == "page" && slug.current == $slug][0]{..., content[]}`
+  // Only service pages are used for non-home pages now.
+  const query = `*[_type == "servicePage" && slug.current == $slug][0]{..., content[]}`
   return await client.fetch(query, { slug })
+}
+
+export async function getHomepage() {
+  // Fetch the singleton homepage document. Using document ID 'homepage' is safer if present.
+  const byId = await client.fetch(`*[_id == "homepage"][0]{..., services[]->, content[]}`)
+  if (byId) return byId
+
+  // Fallback: fetch first document of type homepage
+  const query = `*[_type == "homepage"][0]{..., services[]->, content[]}`
+  return await client.fetch(query)
 }
 
 // Minimal Portable Text renderer for common block types used in the site.

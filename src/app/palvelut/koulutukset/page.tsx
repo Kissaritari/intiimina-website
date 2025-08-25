@@ -1,25 +1,24 @@
 import Header from "@/components/Header";
-import Link from 'next/link';
 import { getPageBySlug, renderPortableText } from '@/sanity/lib/getPage'
+import Link from "next/link";
 
 export default async function Koulutukset() {
   const page = await getPageBySlug('koulutukset')
 
-  const title = page?.title || 'Koulutukset sosiaali-, terveys- ja kasvatusaloille sekä vuorovaikutusammattilaisille'
   const content = page?.content
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
       <Header />
       <main className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-6">{title}</h1>
+  <h1 className="text-4xl font-bold mb-6">{page?.title || 'Koulutukset sosiaali-, terveys- ja kasvatusaloille sekä vuorovaikutusammattilaisille'}</h1>
         <div className="prose max-w-none">
           {content ? (
             renderPortableText(content)
           ) : (
             // Original static content (kept commented for migration to Sanity)
             <>
-            {/*
+            
             <p className="text-lg mb-6">
               Tarjoan monipuolisia koulutuksia, jotka suunnitellaan aina yhdessä
               tilaajan kanssa vastaamaan juuri teidän tarpeitanne. Koulutukset
@@ -85,7 +84,7 @@ export default async function Koulutukset() {
               “Kouluttajana olet helposti lähestyttävä ja asiantunteva.
               Pohdinnalle on tilaa.”
             </blockquote>
-            */}
+            
             </>
           )}
         </div>

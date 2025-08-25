@@ -1,5 +1,3 @@
-import Card from '@/components/card';
-import Button from '@/components/Button';
 import Header from '@/components/Header';
 import { getPageBySlug, renderPortableText } from '@/sanity/lib/getPage'
 
@@ -12,6 +10,7 @@ export default async function About() {
     <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
       <Header />
       <main className="max-w-4xl mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold mb-6">{title}</h1>
         {content ? (
           renderPortableText(content)
         ) : (

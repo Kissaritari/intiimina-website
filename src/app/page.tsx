@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Card from "@/components/card";
 import Button from "@/components/Button";
-import { getPageBySlug, renderPortableText } from '@/sanity/lib/getPage'
+import { getHomepage, renderPortableText } from '@/sanity/lib/getPage'
 
 // Metadata can be static or built from Sanity; we keep a default here.
 export const metadata: Metadata = {
@@ -34,13 +34,13 @@ import {
 } from "@/components/carousel";
 
 export default async function Home() {
-  // Fetch the 'home' page document from Sanity. Assumes a `page` type with slug 'home'.
-  const page = await getPageBySlug('home')
+  // Fetch the homepage singleton from Sanity.
+  const page = await getHomepage()
 
   const heroTitle = page?.heroTitle || null
   const heroText = page?.heroText || null
-  const services = page?.services || []
   const blogIntro = page?.blogIntro || null
+  const services = page?.services || []
   const contactIntro = page?.contactIntro || null
 
   return (
@@ -80,7 +80,7 @@ export default async function Home() {
 
         {/* Services Section */}
         <section id="services" className="container-wide flex-col gap-6">
-          <h3 className="heading-tertiary text-center">Palvelut</h3>
+          <h3 className="heading-tertiary text-center ">Palvelut</h3>
           <Carousel opts={{ loop: true }} className="w-full max-w-4xl mx-auto">
             <CarouselContent>
               {services.length > 0 ? (

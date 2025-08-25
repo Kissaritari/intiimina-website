@@ -13,7 +13,7 @@ export default async function Tyonohjaus() {
         <h1 className="text-4xl font-bold mb-6">{title}</h1>
         <div className="prose max-w-none">
           {content ? renderPortableText(content) : (
-            <>{/*
+            <>
             <p className="text-lg mb-6">
               Integratiivinen työnohjaus on työnohjauksen lähestymistapa, jossa yhdistetään eri
               menetelmiä ja teoreettisia viitekehyksiä työn ja ammatillisen kasvun tukemiseksi. Se ei
@@ -112,7 +112,7 @@ export default async function Tyonohjaus() {
               </ul>
             </section>
 
-          */}</>
+          </>
           )}
         </div>
       </main>
