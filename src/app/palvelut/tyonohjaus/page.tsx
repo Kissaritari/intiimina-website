@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
-import { getPageBySlug, renderPortableText } from '@/sanity/lib/getPage'
+import RichText from '@/lib/RichText';
+import { getPageBySlug } from '@/sanity/lib/getPage'
 
 export default async function Tyonohjaus() {
   const page = await getPageBySlug('tyonohjaus')
@@ -12,7 +13,7 @@ export default async function Tyonohjaus() {
       <main className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-6">{title}</h1>
         <div className="prose max-w-none">
-          {content ? renderPortableText(content) : (
+          {content ? <RichText value={page.content} /> : (
             <>
             <p className="text-lg mb-6">
               Integratiivinen työnohjaus on työnohjauksen lähestymistapa, jossa yhdistetään eri

@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
-import { getPageBySlug, renderPortableText } from "@/sanity/lib/getPage";
+import RichText from "@/lib/RichText";
+import { getPageBySlug } from "@/sanity/lib/getPage";
 
 export default async function Konsultaatiot() {
   const page = await getPageBySlug("konsultaatiot");
@@ -13,7 +14,7 @@ export default async function Konsultaatiot() {
         <h1 className="text-4xl font-bold mb-6">{title}</h1>
         <div className="prose max-w-none">
           {content ? (
-            renderPortableText(content)
+            <RichText value={content} />
           ) : (
             <>
               <p className="text-lg mb-6">

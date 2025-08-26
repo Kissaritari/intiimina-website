@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
-import { getPageBySlug, renderPortableText } from '@/sanity/lib/getPage'
+import RichText from "@/lib/RichText";
+import { getPageBySlug } from '@/sanity/lib/getPage'
 import Link from "next/link";
 
 export default async function Koulutukset() {
@@ -14,7 +15,7 @@ export default async function Koulutukset() {
   <h1 className="text-4xl font-bold mb-6">{page?.title || 'Koulutukset sosiaali-, terveys- ja kasvatusaloille sekä vuorovaikutusammattilaisille'}</h1>
         <div className="prose max-w-none">
           {content ? (
-            renderPortableText(content)
+            <RichText value={content} />
           ) : (
             // Original static content (kept commented for migration to Sanity)
             <>

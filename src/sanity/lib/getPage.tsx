@@ -26,14 +26,19 @@ export function renderPortableText(blocks: SanityBlock[] | undefined) {
   return blocks.map((block, i) => {
     if (block._type === 'block') {
       const style = block.style || 'normal'
-      const children = (block.children || []).map((c: any) => c.text).join('')
+  const children = (block.children || []).map((c: any) => c.text || '').join('')
 
-      if (style === 'h1') return <h1 key={i}>{children}</h1>
-      if (style === 'h2') return <h2 key={i}>{children}</h2>
-      if (style === 'h3') return <h3 key={i}>{children}</h3>
-      if (style === 'blockquote') return <blockquote key={i}>{children}</blockquote>
+  if (style === 'h1') return <h1 key={i}>{children}</h1>
+  if (style === 'h2') return <h2 key={i}>{children}</h2>
+  if (style === 'h3') return <h3 key={i}>{children}</h3>
+  if (style === 'blockquote') return <blockquote key={i}>{children}</blockquote>
 
-      return <p key={i}>{children}</p>
+  // If the block has no text (an empty line in the editor), render a
+  // paragraph with a non-breaking space and the site's paragraph margin so
+  // the empty line becomes visible in the output instead of being skipped.
+  if (!children.trim()) return <p key={i} className="mb-4">&nbsp;</p>
+
+  return <p key={i} className="mb-4">{children}</p>
     }
 
     if (block._type === 'list') {

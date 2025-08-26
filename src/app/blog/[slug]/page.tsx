@@ -3,7 +3,7 @@ import { urlFor } from '@/sanity/lib/image'
 import Header from '@/components/Header'
 import Button from '@/components/Button'
 import Image from 'next/image'
-import { PortableText } from '@portabletext/react'
+import RichText from '@/lib/RichText'
 
 type Props = {
   // Next's generated types may expect `params` to be a Promise (see .next/types/...)
@@ -97,7 +97,7 @@ export default async function PostPage({ params }: Props) {
 
           <div className="prose max-w-none">
             {post.body ? (
-              <PortableText value={post.body} />
+              <RichText value={post.body} />
             ) : (
               <p>Tämän artikkelin sisältöä ei ole saatavilla.</p>
             )}

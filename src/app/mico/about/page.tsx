@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
-import { getPageBySlug, renderPortableText } from '@/sanity/lib/getPage'
+import RichText from '@/lib/RichText';
+import { getPageBySlug } from '@/sanity/lib/getPage'
 
 export default async function About() {
   const page = await getPageBySlug('about')
@@ -12,7 +13,7 @@ export default async function About() {
       <main className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold mb-6">{title}</h1>
         {content ? (
-          renderPortableText(content)
+          <RichText value={content} />
         ) : (
           <>
           {/*
