@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '@/components/card'
 import Button from '@/components/Button'
 import { urlFor } from '@/sanity/lib/image'
+import RichText from '@/lib/RichText'
 
 type SanityImage = any
 
@@ -30,7 +31,7 @@ export default function ServiceCards({ cards }: Props) {
 
           return (
             <div key={key} className="min-w-[260px] md:min-w-0 flex-shrink-0">
-              <Card title={c.title || ''} description={c.description || ''} imageUrl={imageUrl}>
+              <Card title={c.title || ''} description={c.description ? <RichText value={c.description} /> : undefined} imageUrl={imageUrl}>
                 {c.link ? (
                   <div className="mt-4">
                     <Button href={c.link} className="inline-block">Varaa</Button>

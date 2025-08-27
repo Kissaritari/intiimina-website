@@ -3,7 +3,8 @@ import Image from 'next/image';
 
 type CardProps = {
     title: string;
-    description?: string;
+    // Allow rich content (JSX) for description
+    description?: React.ReactNode;
     imageUrl?: string;
     children?: React.ReactNode;
 };
@@ -31,7 +32,7 @@ const Card: React.FC<CardProps> = ({ title, description, imageUrl, children }) =
             </div>
         )}
         <h3 style={{ margin: '0 0 12px 0' }}>{title}</h3>
-        {description && <p style={{ margin: '0 0 12px 0', color: '#555' }}>{description}</p>}
+    {description && <div style={{ margin: '0 0 12px 0', color: '#555' }}>{description}</div>}
         {children}
     </div>
 );
