@@ -11,6 +11,36 @@ export const servicePageType = defineType({
     defineField({name: 'slug', type: 'slug', options: {source: 'title'}}),
     defineField({name: 'intro', title: 'Intro', type: 'string'}),
     defineField({name: 'content', title: 'Content', type: 'blockContent'}),
+    // Cards section: allow multiple small card objects for service pages
+    defineField({
+      name: 'cards',
+      title: 'Cards',
+      type: 'array',
+      of: [
+        defineField({
+          type: 'object',
+          name: 'card',
+          title: 'Card',
+          fields: [
+            defineField({name: 'title', title: 'Title', type: 'string'}),
+            defineField({name: 'description', title: 'Description', type: 'text'}),
+            defineField({
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {hotspot: true},
+              fields: [
+                defineField({name: 'alt', title: 'Alt text', type: 'string'}),
+              ],
+            }),
+            defineField({name: 'link', title: 'Link', type: 'url'}),
+          ],
+          preview: {
+            select: {title: 'title', media: 'image'},
+          },
+        }),
+      ],
+    }),
   ],
   preview: {select: {title: 'title'}},
 })

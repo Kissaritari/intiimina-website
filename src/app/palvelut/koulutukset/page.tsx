@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import RichText from "@/lib/RichText";
+import ServiceCards from '@/components/ServiceCards';
 import { getPageBySlug } from '@/sanity/lib/getPage'
 import Link from "next/link";
 
@@ -15,7 +16,10 @@ export default async function Koulutukset() {
   <h1 className="text-4xl font-bold mb-6">{page?.title || 'Koulutukset sosiaali-, terveys- ja kasvatusaloille sekä vuorovaikutusammattilaisille'}</h1>
         <div className="prose max-w-none">
           {content ? (
-            <RichText value={content} />
+            <>
+              <RichText value={content} />
+              <ServiceCards cards={page?.cards} />
+            </>
           ) : (
             // Original static content (kept commented for migration to Sanity)
             <>

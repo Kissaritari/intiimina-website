@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import RichText from '@/lib/RichText';
+import ServiceCards from '@/components/ServiceCards';
 import { getPageBySlug } from '@/sanity/lib/getPage'
 
 export default async function Tyonohjaus() {
@@ -116,6 +117,9 @@ export default async function Tyonohjaus() {
           </>
           )}
         </div>
+
+        {/* Cards (prices) */}
+        <ServiceCards cards={page?.cards} />
       </main>
     </div>
   );
