@@ -1,6 +1,7 @@
 import { type SchemaTypeDefinition } from 'sanity'
 
 import {blockContentType} from './blockContentType'
+import {cardType} from './card'
 import {categoryType} from './categoryType'
 import {postType} from './postType'
 import {authorType} from './authorType'
@@ -11,6 +12,7 @@ import {servicePageType} from './servicePage'
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     blockContentType,
+    cardType,
     categoryType,
     postType,
     authorType,

@@ -3,13 +3,14 @@ import Card from '@/components/card'
 import Button from '@/components/Button'
 import { urlFor } from '@/sanity/lib/image'
 import RichText from '@/lib/RichText'
+import { PortableTextBlock } from '@portabletext/types'
 
 type SanityImage = any
 
 type CardItem = {
   _key?: string
   title?: string
-  description?: string
+  description?: PortableTextBlock[]
   image?: SanityImage
   link?: string
 }
