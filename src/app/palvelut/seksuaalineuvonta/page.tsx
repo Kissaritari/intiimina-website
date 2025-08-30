@@ -1,5 +1,3 @@
-import Button from "@/components/Button";
-import Card from "@/components/card";
 import Header from "@/components/Header";
 import RichText from "@/lib/RichText";
 import ServiceCards from "@/components/ServiceCards";

@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import RichText from "@/lib/RichText";
 import ServiceCards from "@/components/ServiceCards";
 import { getPageBySlug } from "@/sanity/lib/getPage";
-import Link from "next/link";
 
 export default async function Koulutukset() {
   const page = await getPageBySlug("koulutukset");

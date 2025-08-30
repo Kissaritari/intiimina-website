@@ -14,7 +14,7 @@ export default async function Tyonohjaus() {
       <main className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-6">{title}</h1>
         <div className="prose max-w-none">
-          <RichText value={page.content} />
+          <RichText value={content} />
         </div>
         <ServiceCards cards={page?.cards} />
       </main>

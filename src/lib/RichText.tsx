@@ -1,5 +1,7 @@
 import { PortableText, PortableTextComponents } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
+import Image from 'next/image'
+import { urlFor } from '@/sanity/lib/image' // adjust path if needed
 
 type RichTextProps = {
   value: PortableTextBlock[]
@@ -37,6 +39,22 @@ export default function RichText({ value, align = 'justify' }: RichTextProps) {
           <p className={`mb-6 leading-relaxed ${align === 'left' ? 'text-left' : 'text-justify'}`}>
             {children}
           </p>
+        )
+      },
+    },
+    types: {
+      image: ({ value }) => {
+        if (!value?.asset?._ref) return null
+        return (
+          <div className="my-8">
+            <Image
+              src={urlFor(value).width(800).url()}
+              alt={value.alt || ' '}
+              width={800}
+              height={450}
+              className="rounded-lg object-cover"
+            />
+          </div>
         )
       },
     },

@@ -24,7 +24,7 @@ export default function ServiceCards({ cards }: Props) {
 
   return (
     <div className="mt-12">
-      <div className="flex  gap-6 overflow-x-auto pb-6 md:gap-8 md:overflow-visible justify-center">
+      <div className="flex gap-6 pb-6 md:gap-8 overflow-x-scroll scroll-px-4">
         {cards.map((c) => {
           const key =
             c._key || c.title || Math.random().toString(36).slice(2, 9);
