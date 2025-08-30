@@ -23,6 +23,7 @@
     "next-sitemap": "^4.2.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-social-icons": "^6.24.0",
     "react-social-media-embed": "^2.5.18",
     "sanity": "^4.4.1",
     "styled-components": "^6.1.19",

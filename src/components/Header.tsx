@@ -6,18 +6,31 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<"services" | "about" | null>(
     null
   );
+  const [menuOpen, setMenuOpen] = useState(false);
   const toggleDropdown = (which: "services" | "about") => {
     setOpenDropdown((prev) => (prev === which ? null : which));
   };
   return (
     <header className="sticky top-0 w-full py-6 px-4 bg-white/95 backdrop-blur-sm shadow-md z-50">
-      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="max-w-4xl mx-auto flex items-center justify-between">
         <h2 className="text-2xl sm:text-3xl tracking-tight text-gray-800 text-shadow-md header-font">
           <Link href="/" className="inline-flex items-center">
             Intii<span className="text-[#b4a4f0]">minä</span>
           </Link>
         </h2>
-        <nav className="flex gap-6 text-lg">
+          {/* Hamburger button (only on mobile) */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="sm:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none"
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
+
+       <nav
+          className={`${
+            menuOpen ? "flex" : "hidden"
+          }  flex-col sm:flex sm:flex-row gap-4 sm:gap-6 text-lg absolute sm:static top-full left-0 w-full sm:w-auto bg-white sm:bg-transparent shadow sm:shadow-none px-4 sm:px-0 py-4 sm:py-0`}
+        >
           <div className="relative group">
             <button
               onClick={() => toggleDropdown("services")}
@@ -110,6 +123,18 @@ export default function Header() {
           </div>
           <Link href="/blog" className="hover:text-[#c8e17a] transition-colors">
             Blogi
+          </Link>
+          <Link
+            href="/yhteystiedot"
+            className="hover:text-[#f7a278] transition-colors"
+          >
+            Yhteystiedot
+          </Link>
+          <Link
+            href={"/materiaalit"}
+            className="hover:text-[#f7a278] transition-colors"
+          >
+            Materiaalit
           </Link>
         </nav>
       </div>
