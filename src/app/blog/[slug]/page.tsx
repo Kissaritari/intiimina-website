@@ -82,7 +82,7 @@ export default async function PostPage({ params }: Props) {
       <Header />
       <main className="max-w-4xl mx-auto py-16 px-4">
       
-        <article>
+        <article className='px-6'>
           <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
           {post.mainImage && (
             <Image
