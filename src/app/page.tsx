@@ -151,7 +151,7 @@ export default async function Home() {
           <p className="text-body">
             {contactIntro || 'Haluatko keskustella palveluistani? Ota yhteyttä.'}
           </p>
-          <Button href="mailto:info@intiimina.com" external>
+          <Button href="mailto:intiimina@proton.me" external>
             Lähetä sähköpostia
           </Button>
         </section>
