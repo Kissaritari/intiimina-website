@@ -1,7 +1,16 @@
 import { Metadata } from "next";
 import Card from "@/components/card";
 import Button from "@/components/Button";
-import { getHomepage, renderPortableText } from '@/sanity/lib/getPage'
+import { getHomepage, renderPortableText } from "@/sanity/lib/getPage";
+import Header from "@/components/Header";
+import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/carousel";
 
 // Metadata can be static or built from Sanity; we keep a default here.
 export const metadata: Metadata = {
@@ -22,26 +31,16 @@ export const metadata: Metadata = {
     ],
   },
 };
-import Header from "@/components/Header";
-import Image from "next/image";
-import Footer from "@/components/Footer";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/carousel";
 
 export default async function Home() {
   // Fetch the homepage singleton from Sanity.
-  const page = await getHomepage()
+  const page = await getHomepage();
 
-  const heroTitle = page?.heroTitle || null
-  const heroText = page?.heroText || null
-  const blogIntro = page?.blogIntro || null
-  const services = page?.services || []
-  const contactIntro = page?.contactIntro || null
+  const heroTitle = page?.heroTitle || null;
+  const heroText = page?.heroText || null;
+  const blogIntro = page?.blogIntro || null;
+  const services = page?.services || [];
+  const contactIntro = page?.contactIntro || null;
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
@@ -50,14 +49,10 @@ export default async function Home() {
         <div className="absolute inset-0 flex-center">
           <div className="container-wide text-center px-4">
             <h1 className="heading-primary mb-6">
-              {heroTitle || (
-                <>Intiiminä koulutus ja konsultaatio</>
-              )}
+              {heroTitle || <>Intiiminä koulutus ja konsultaatio</>}
             </h1>
             <p className="text-body-large max-w-2xl mx-auto mb-8 text-shadow-2xs">
-              {heroText || (
-                <>Rohkeasti, lempeästi ja inhimillisesti.</>
-              )}
+              {heroText || <>Rohkeasti, lempeästi ja inhimillisesti.</>}
             </p>
             <Button href="#contact">Ota yhteyttä</Button>
           </div>
@@ -68,7 +63,7 @@ export default async function Home() {
 
       <main className="flex-1 flex-col-center section-padding section-spacing">
         {/* About Section */}
-      {  /*
+        {/*
         <section
           id="about"
           className="container-narrow text-center flex-col gap-4"
@@ -88,7 +83,9 @@ export default async function Home() {
                   <CarouselItem key={idx}>
                     <Card title={s.title}>
                       {s.description ? (
-                        <div className="text-gray-600">{renderPortableText(s.description)}</div>
+                        <div className="text-gray-600">
+                          {renderPortableText(s.description)}
+                        </div>
                       ) : null}
                     </Card>
                   </CarouselItem>
@@ -106,8 +103,8 @@ export default async function Home() {
                   <CarouselItem>
                     <Card title="Koulutus">
                       <p className="text-gray-600">
-                        Tarjoan monipuolisia koulutuspalveluita organisaatioille ja
-                        yksityishenkilöille.
+                        Tarjoan monipuolisia koulutuspalveluita organisaatioille
+                        ja yksityishenkilöille.
                       </p>
                     </Card>
                   </CarouselItem>
@@ -137,7 +134,7 @@ export default async function Home() {
         <section className="container-narrow text-center mt-8">
           <h3 className="heading-tertiary">Blogi</h3>
           <p className="text-body mb-4">
-            {blogIntro || 'Lue ajatuksiani ja tarinoita työstäni.'}
+            {blogIntro || "Lue ajatuksiani ja tarinoita työstäni."}
           </p>
           <Button href="/blog">Siirry blogiin</Button>
         </section>
@@ -149,7 +146,8 @@ export default async function Home() {
         >
           <h3 className="heading-tertiary">Ota yhteyttä</h3>
           <p className="text-body">
-            {contactIntro || 'Haluatko keskustella palveluistani? Ota yhteyttä.'}
+            {contactIntro ||
+              "Haluatko keskustella palveluistani? Ota yhteyttä."}
           </p>
           <Button href="mailto:intiimina@proton.me" external>
             Lähetä sähköpostia

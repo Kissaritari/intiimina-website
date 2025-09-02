@@ -118,6 +118,12 @@ export default function Header() {
                 >
                   Minusta ja työotteestani
                 </Link>
+                    <Link
+                  href="/mico/media"
+                  className="block px-4 py-2 hover:bg-gray-100 cursor-pointer transition-colors"
+                >
+                  Media
+                </Link>
               </div>
             )}
           </div>
