@@ -26,7 +26,11 @@ async function getPosts(): Promise<Post[]> {
     title,
     "slug": slug,
     publishedAt,
-    mainImage
+    mainImage,
+      categories[]->{
+    title,
+    description
+  }
   }`;
 
   return await client.fetch(query);
@@ -77,14 +81,16 @@ export default async function Blog() {
                 >
                   Lue
                 </Button>
-                {p.categories?.map((cat) => (
-                  <div
-                    key={cat.title}
-                    className="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 my-2 rounded-full mr-2 mb-2"
-                  >
-                    {cat.title}
-                  </div>
-                ))}
+                <div className="mt-2 flex flex-wrap gap-1 p-2 rounded-lg bg-gray-50 border border-gray-200">
+                  {p.categories?.map((cat) => (
+                    <div
+                      key={cat.title}
+                      className="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-full"
+                    >
+                      {cat.title}
+                    </div>
+                  ))}
+                </div>
               </Card>
             ))
           )}
