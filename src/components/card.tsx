@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { category } from "@/app/blog/page";
 
 type CardProps = {
   title: string;
@@ -15,9 +16,14 @@ const Card: React.FC<CardProps> = ({
   description,
   imageUrl,
   children,
-  className = '',
+  className = "",
 }) => (
-  <div className={`border border-gray-200 rounded-xl shadow-md p-5 lg:max-w-3xl max-w-sm mx-auto my-4` + className}>
+  <div
+    className={
+      `border border-gray-200 rounded-xl shadow-md p-5 lg:max-w-3xl max-w-sm mx-auto my-4` +
+      className
+    }
+  >
     {imageUrl && (
       <div>
         <Image src={imageUrl} alt={title} fill style={{ objectFit: "cover" }} />

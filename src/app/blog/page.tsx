@@ -1,16 +1,21 @@
-import Card from '@/components/card';
-import Button from '@/components/Button';
-import Header from '@/components/Header';
-import { client } from '@/sanity/lib/client'
-import { urlFor } from '@/sanity/lib/image'
+import Card from "@/components/card";
+import Button from "@/components/Button";
+import Header from "@/components/Header";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 
 type Post = {
-  _id: string
-  title: string
-  slug: { current: string }
-  publishedAt?: string
-  mainImage?: any
-  description?: string
+  _id: string;
+  title: string;
+  slug: { current: string };
+  publishedAt?: string;
+  mainImage?: any;
+  description?: string;
+  categories?: category[];
+};
+export interface category {
+  title: string;
+  description?: string;
 }
 
 async function getPosts(): Promise<Post[]> {
@@ -22,18 +27,19 @@ async function getPosts(): Promise<Post[]> {
     "slug": slug,
     publishedAt,
     mainImage
-  }`
+  }`;
 
-  return await client.fetch(query)
+  return await client.fetch(query);
 }
 
 export const metadata = {
-  title: 'Blogi | Intiimina',
-  description: 'Ajatuksia ja oivalluksia seksuaalisuudesta, sukupuolesta ja moninaisuudesta',
-}
+  title: "Blogi | Intiimina",
+  description:
+    "Ajatuksia ja oivalluksia seksuaalisuudesta, sukupuolesta ja moninaisuudesta",
+};
 
 export default async function Blog() {
-  const posts = await getPosts()
+  const posts = await getPosts();
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
@@ -41,33 +47,49 @@ export default async function Blog() {
       <main className="max-w-4xl mx-auto py-16 px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Blogi</h1>
-          <p className="text-xl text-gray-600 mb-8">Ajatuksia ja oivalluksia hyvinvoinnista, moninaisuudesta ja rohkeudesta.</p>
+          <p className="text-xl text-gray-600 mb-8">
+            Ajatuksia ja oivalluksia hyvinvoinnista, moninaisuudesta ja
+            rohkeudesta.
+          </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.length === 0 ? (
-            <Card 
+            <Card
               title="Tulossa pian!"
               description="Blogitekstejä ei ole vielä julkaistu. Pysy kuulolla!"
-            >
-          
-            </Card>
+            ></Card>
           ) : (
             posts.map((p) => (
               <Card
                 key={p._id}
                 title={p.title}
                 description={p.description}
-                imageUrl={p.mainImage ? urlFor(p.mainImage).width(800).auto('format').url() : undefined}
+                imageUrl={
+                  p.mainImage
+                    ? urlFor(p.mainImage).width(800).auto("format").url()
+                    : undefined
+                }
               >
-                <Button href={`/blog/${p.slug?.current || ''}`} className="mt-4 w-full">
+                <Button
+                  href={`/blog/${p.slug?.current || ""}`}
+                  className="mt-4 w-full"
+                >
                   Lue
                 </Button>
+                {p.categories?.map((cat) => (
+                  <div
+                    key={cat.title}
+                    className="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 my-2 rounded-full mr-2 mb-2"
+                  >
+                    {cat.title}
+                  </div>
+                ))}
               </Card>
             ))
           )}
         </div>
       </main>
     </div>
-  )
+  );
 }
