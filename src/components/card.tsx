@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { category } from "@/app/blog/page";
 
 type CardProps = {
   title: string;
@@ -20,13 +19,19 @@ const Card: React.FC<CardProps> = ({
 }) => (
   <div
     className={
-      `border border-gray-200 rounded-xl shadow-md p-5 lg:max-w-3xl max-w-sm mx-auto my-4` +
-      className
+      `border border-gray-200 rounded-xl shadow-md p-5 lg:max-w-3xl max-w-sm mx-auto my-4 ${className}`
     }
   >
     {imageUrl && (
-      <div>
-        <Image src={imageUrl} alt={title} fill style={{ objectFit: "cover" }} />
+      <div className="w-full h-44 mb-4 overflow-hidden rounded-lg relative">
+        {/* Use fixed dimensions so Image doesn't try to fill an unstyled parent */}
+        <Image
+          src={imageUrl}
+          alt={title}
+          width={800}
+          height={450}
+          className="object-cover w-full h-full"
+        />
       </div>
     )}
     <h3 className="font-semibold text-lg">{title}</h3>

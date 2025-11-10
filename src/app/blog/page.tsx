@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import Header from "@/components/Header";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
+import ClientBlog from "./ClientBlog";
 
 type Post = {
   _id: string;
@@ -43,7 +44,7 @@ export const metadata = {
 };
 
 export default async function Blog() {
-  const posts = await getPosts();
+  const Posts = await getPosts();
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
@@ -57,44 +58,8 @@ export default async function Blog() {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {posts.length === 0 ? (
-            <Card
-              title="Tulossa pian!"
-              description="Blogitekstejä ei ole vielä julkaistu. Pysy kuulolla!"
-            ></Card>
-          ) : (
-            posts.map((p) => (
-              <Card
-                key={p._id}
-                title={p.title}
-                description={p.description}
-                imageUrl={
-                  p.mainImage
-                    ? urlFor(p.mainImage).width(800).auto("format").url()
-                    : undefined
-                }
-              >
-                <Button
-                  href={`/blog/${p.slug?.current || ""}`}
-                  className="mt-4 w-full"
-                >
-                  Lue
-                </Button>
-                <div className="mt-2 flex flex-wrap gap-1 p-2 rounded-lg bg-gray-50 border border-gray-200">
-                  {p.categories?.map((cat) => (
-                    <div
-                      key={cat.title}
-                      className="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-full"
-                    >
-                      {cat.title}
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            ))
-          )}
-        </div>
+        {/* Client-side interactive list (handles filters) */}
+        <ClientBlog posts={Posts} />
       </main>
     </div>
   );

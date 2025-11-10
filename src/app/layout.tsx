@@ -36,22 +36,15 @@ export const metadata: Metadata = {
     title: "Intiimina",
     description:
       "Ohjausta, neuvontaa ja asiantuntijuutta  - rohkeasti, lempeästi ja inhimillisesti",
-    images: [
-      {
-        // fallback to an existing public asset; replace with dedicated OG image when available
-        url: "/yrittajatLogo.png",
-        width: 1200,
-        height: 630,
-        alt: "Intiimina - Ohjausta ja neuvontaa",
-      },
-    ],
+    // Intentionally no default images here. Individual pages/components
+    // should provide an `openGraph.images` entry when they have a specific
+    // visual to use. This avoids social previews defaulting to the site logo.
   },
   twitter: {
     card: "summary_large_image",
     title: "Intiimina",
     description:
       "Ohjausta, neuvontaa ja asiantuntijuutta - rohkeasti, lempeästi ja inhimillisesti",
-    images: ["/yrittajatLogo.png"],
   },
   robots: {
     index: true,

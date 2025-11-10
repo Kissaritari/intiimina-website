@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props) {
   const post = await getPostBySlug(resolved.slug)
   if (!post) return {}
 
-  const imageUrl = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).auto('format').url() : '/yrittajatLogo.png'
+  const imageUrl = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).auto('format').url() : ''
 
   return {
     title: `${post.title} | Intiimina`,
