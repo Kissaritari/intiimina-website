@@ -1,8 +1,5 @@
-import Card from "@/components/card";
-import Button from "@/components/Button";
 import Header from "@/components/Header";
 import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
 import ClientBlog from "./ClientBlog";
 
 type Post = {
