@@ -4,11 +4,11 @@ import { getPageBySlug } from "@/sanity/lib/getPage";
 
 export default async function References() {
   const page = await getPageBySlug("references");
-  const title = page?.title || "Ansioluettelo";
+  const title = page?.title || "Referenssit";
   const content = page?.content;
 
   return (
-    <div className="min-h-screen flex flex-col  bg-background text-primary">
+    <div className="min-h-screen flex flex-col  bg-background text-text">
       <Header />
       <main className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-6">{title}</h1>

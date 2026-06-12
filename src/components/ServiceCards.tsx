@@ -7,7 +7,7 @@ import { PortableTextBlock } from "@portabletext/types";
 
 type SanityImage = any;
 
-type CardItem = {
+export type CardItem = {
   _key?: string;
   title?: string;
   description?: PortableTextBlock[];
@@ -35,10 +35,10 @@ export default function ServiceCards({ cards }: Props) {
           return (
             <div
               key={key}
-              className="min-w-[260px] md:min-w-[320px] lg:min-w-[380px] xl:min-w-[420px] flex-shrink-0 "
+              className="min-w-65 md:min-w-[320px] lg:min-w-95 xl:min-w-105 shrink-0 "
             >
               <Card
-                className="bg-[var(--color-ivory)] "
+                className="bg-background"
                 title={c.title || ""}
                 description={
                   c.description ? (

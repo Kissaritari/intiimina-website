@@ -16,7 +16,7 @@ export default function RichText({ value, align = 'justify' }: RichTextProps) {
       h3: ({ children }) => <h3 className="text-2xl font-semibold my-4">{children}</h3>,
       h4: ({ children }) => <h4 className="text-xl font-semibold my-3">{children}</h4>,
       blockquote: ({ children }) => (
-        <blockquote className="border-l-4 border-[var(--color-sage)] pl-4 italic my-4 text-[var(--color-graphite)] bg-[rgba(203,179,138,0.12)]">
+        <blockquote className="border-l-4 border-secondary pl-4 italic my-4 mx-2 text-text bg-secondary/10">
           {children}
         </blockquote>
       ),
@@ -36,7 +36,7 @@ export default function RichText({ value, align = 'justify' }: RichTextProps) {
         }
 
         return (
-          <p className={`mb-6 leading-relaxed ${align === 'left' ? 'text-left' : 'text-justify'}`}>
+          <p className={`mb-6 px-2 leading-relaxed ${align === 'left' ? 'text-left' : 'text-justify'}`}>
             {children}
           </p>
         )
@@ -66,7 +66,7 @@ export default function RichText({ value, align = 'justify' }: RichTextProps) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[var(--color-petrol)] underline"
+            className="text-text underline"
           >
             {children}
           </a>
@@ -85,3 +85,4 @@ export default function RichText({ value, align = 'justify' }: RichTextProps) {
 
   return <PortableText value={value} components={components} />
 }
+

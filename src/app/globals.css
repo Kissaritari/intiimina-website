@@ -2,19 +2,16 @@
 
 @theme {
   --color-primary: #0f5d5e;
-   --color-primary-hover: #0c4d4e;
+  --color-primary-hover: #09393a;
   --color-secondary: #aebca7;
   --color-accent: #c46d4a;
   --color-background: #f8f4ee;
   --color-text: #2a2a2a;
   --color-highlight: #cbb38a;
+  --color-badge: #e0e0e0;
+  --color-badge-selected: #cbb38a;
 
   --font-heading: "Montserrat", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-accent: "Cormorant Garamond", serif;
 }
-
-
-  .gradient-primary {
-    @apply bg-linear-to-r from-primary via-highlight to-accent;
-  }

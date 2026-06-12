@@ -50,7 +50,7 @@ export default function ClientBlog({ posts }: { posts: Post[] }) {
             <button
               key={cat}
               onClick={() => toggleFilter(cat)}
-              className={`text-xs px-3 py-1 rounded-full border ${active ? "bg-[var(--color-petrol)] text-[var(--color-ivory)] border-[var(--color-petrol)]" : "bg-[var(--color-ivory)] text-[var(--color-graphite)] border-[var(--color-sage)]"}`}
+              className={`text-xs cursor-pointer px-3 py-1 rounded-full border ${active ? "bg-badge-selected text-text border-primary" : "bg-badge text-text border-secondary"}`}
             >
               {cat}
             </button>
@@ -59,7 +59,7 @@ export default function ClientBlog({ posts }: { posts: Post[] }) {
         {filters.length > 0 && (
           <button
             onClick={() => setFilters([])}
-            className="text-xs px-3 py-1 rounded-full border bg-[var(--color-terracotta)]/15 text-[var(--color-terracotta)] border-[var(--color-terracotta)]"
+            className="text-xs px-3 py-1 rounded-full border bg-accent-light text-accent border-accent"
           >
             Tyhjennä suodattimet
           </button>
@@ -90,11 +90,11 @@ export default function ClientBlog({ posts }: { posts: Post[] }) {
               >
                 Lue
               </Button>
-              <div className="mt-2 flex flex-wrap gap-1 p-2 rounded-lg bg-[var(--color-ivory)] border border-[var(--color-sage)]">
+              <div className="mt-2 flex flex-wrap gap-1 p-2 rounded-lg border border-secondary">
                 {p.categories?.map((cat) => (
                   <div
                     key={cat.title}
-                    className="bg-[var(--color-sage)]/25 text-[var(--color-petrol)] text-xs px-2 py-0.5 rounded-full"
+                    className="bg-secondary text-text text-xs px-2 py-0.5 rounded-full"
                   >
                     {cat.title}
                   </div>

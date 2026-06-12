@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({
 }) => (
   <div
     className={
-      `border border-[var(--color-sage)] rounded-xl shadow-md p-5 lg:max-w-3xl max-w-sm mx-auto my-4 ${className}`
+      `border border-secondary rounded-xl shadow-md p-5 lg:max-w-3xl max-w-sm mx-auto my-4 ${className}`
     }
   >
     {imageUrl && (
@@ -37,8 +37,8 @@ const Card: React.FC<CardProps> = ({
     <h3 className="font-semibold text-lg">{title}</h3>
     {description && (
       <div
-        className="text-left"
-        style={{ margin: "0 0 12px 0", color: "var(--color-graphite)" }}
+        className="text-left text-text"
+        style={{ margin: "0 0 12px 0" }}
       >
         {description}
       </div>

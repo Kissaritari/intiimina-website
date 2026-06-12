@@ -8,7 +8,7 @@ export default async function Materiaalit() {
   const title = page?.title || "Materiaalit";
   const content = page?.content;
   return (
-    <div className="min-h-screen flex flex-col  bg-background text-primary">
+    <div className="min-h-screen flex flex-col  bg-background text-text">
       <Header />
       <main className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-6">{title}</h1>
