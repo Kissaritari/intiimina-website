@@ -44,7 +44,7 @@ export default async function Blog() {
   const Posts = await getPosts();
 
   return (
-    <div className="min-h-screen flex flex-col  bg-[var(--color-ivory)] text-[var(--color-graphite)]">
+    <div className="min-h-screen flex flex-col  bg-background text-primary">
       <Header />
       <main className="max-w-4xl mx-auto py-16 px-4">
         <div className="text-center mb-12">
@@ -61,6 +61,7 @@ export default async function Blog() {
     </div>
   );
 }
+
 
 
 

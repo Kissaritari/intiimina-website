@@ -2,9 +2,9 @@ import Header from "@/components/Header";
 import RichText from "@/lib/RichText";
 import { getPageBySlug } from "@/sanity/lib/getPage";
 
-export default async function CV() {
-  const page = await getPageBySlug("media");
-  const title = page?.title || "Media";
+export default async function References() {
+  const page = await getPageBySlug("references");
+  const title = page?.title || "Ansioluettelo";
   const content = page?.content;
 
   return (
@@ -19,6 +19,5 @@ export default async function CV() {
     </div>
   );
 }
-
 
 
