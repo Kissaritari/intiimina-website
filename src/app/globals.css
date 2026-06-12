@@ -1,64 +1,20 @@
-@import "tailwindcss";
-@import "./colors.css";
-@import "../styles/common.css";
-
-
-
+﻿@import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-petrol: #0f5d5e;
-  --color-terracotta: #c46d4a;
-  --color-ivory: #f8f4ee;
-  --color-sage: #aebca7;
-  --color-graphite: #2a2a2a;
-  --color-goldbeige: #cbb38a;
+  --color-primary: #0f5d5e;
+   --color-primary-hover: #0c4d4e;
+  --color-secondary: #aebca7;
+  --color-accent: #c46d4a;
+  --color-background: #f8f4ee;
+  --color-text: #2a2a2a;
+  --color-highlight: #cbb38a;
 
-  /* Fonts */
   --font-heading: "Montserrat", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-accent: "Cormorant Garamond", serif;
 }
 
-body {
-  background-color: var(--color-ivory);
-  color: var(--color-graphite);
-  font-family: var(--font-body);
-}
 
-:root {
-  color-scheme: light;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  color: var(--color-graphite);
-}
-
-blockquote,
-q {
-  font-family: var(--font-accent);
-  font-style: italic;
-  color: var(--color-graphite);
-}
-
-blockquote {
-  border-left: 0.35rem solid var(--color-sage);
-  padding-left: 1rem;
-  margin: 1.5rem 0;
-  background: rgba(203, 179, 138, 0.12);
-}
-
-.keyword,
-mark {
-  font-family: var(--font-accent);
-  font-style: italic;
-  color: var(--color-petrol);
-}
-
+  .gradient-primary {
+    @apply bg-linear-to-r from-primary via-highlight to-accent;
+  }
