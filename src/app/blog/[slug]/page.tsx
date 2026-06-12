@@ -1,25 +1,25 @@
-import { client } from '@/sanity/lib/client'
-import { urlFor } from '@/sanity/lib/image'
-import Header from '@/components/Header'
-import Button from '@/components/Button'
-import Image from 'next/image'
-import RichText from '@/lib/RichText'
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import Header from "@/components/Header";
+import Button from "@/components/Button";
+import Image from "next/image";
+import RichText from "@/lib/RichText";
 
 type Props = {
   // Next's generated types may expect `params` to be a Promise (see .next/types/...)
   // declare it as a Promise so the component's param type satisfies Next's generated constraint.
-  params: Promise<{ slug: string }>
-}
+  params: Promise<{ slug: string }>;
+};
 
 type Post = {
-  _id: string
-  title: string
-  slug: { current: string }
-  publishedAt?: string
-  mainImage?: any
-  description?: string
-  body?: any
-}
+  _id: string;
+  title: string;
+  slug: { current: string };
+  publishedAt?: string;
+  mainImage?: any;
+  description?: string;
+  body?: any;
+};
 
 async function getPostBySlug(slug: string): Promise<Post | null> {
   const query = `*[_type == "post" && slug.current == $slug][0]{
@@ -29,17 +29,19 @@ async function getPostBySlug(slug: string): Promise<Post | null> {
     publishedAt,
     mainImage,
     body
-  }`
+  }`;
 
-  return await client.fetch(query, { slug })
+  return await client.fetch(query, { slug });
 }
 
 export async function generateMetadata({ params }: Props) {
-  const resolved = await params
-  const post = await getPostBySlug(resolved.slug)
-  if (!post) return {}
+  const resolved = await params;
+  const post = await getPostBySlug(resolved.slug);
+  if (!post) return {};
 
-  const imageUrl = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).auto('format').url() : ''
+  const imageUrl = post.mainImage
+    ? urlFor(post.mainImage).width(1200).height(630).auto("format").url()
+    : "";
 
   return {
     title: `${post.title} | Intiimina`,
@@ -59,34 +61,33 @@ export async function generateMetadata({ params }: Props) {
     alternates: {
       canonical: `https://intiimina.fi/blog/${resolved.slug}`,
     },
-  }
+  };
 }
 
 export default async function PostPage({ params }: Props) {
-  const resolved = await params
-  const post = await getPostBySlug(resolved.slug)
+  const resolved = await params;
+  const post = await getPostBySlug(resolved.slug);
 
   if (!post) {
     return (
-      <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
+      <div className="min-h-screen flex flex-col  bg-background text-text">
         <Header />
         <main className="max-w-4xl mx-auto py-16 px-4">
           <h1 className="text-2xl font-semibold">Post not found</h1>
         </main>
       </div>
-    )
+    );
   }
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
+    <div className="min-h-screen flex flex-col  bg-background text-text">
       <Header />
       <main className="max-w-4xl mx-auto py-16 px-4">
-      
-        <article className='px-6'>
+        <article className="px-6">
           <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
           {post.mainImage && (
             <Image
-              src={urlFor(post.mainImage).width(1600).auto('format').url()}
+              src={urlFor(post.mainImage).width(1600).auto("format").url()}
               alt={post.title}
               className="w-full rounded mb-6"
               width={1600}
@@ -103,17 +104,19 @@ export default async function PostPage({ params }: Props) {
             )}
           </div>
         </article>
-          <div className="mt-6">
-          <Button href="/blog" className="px-4 py-2">&larr; Takaisin blogiin</Button>
+        <div className="mt-6">
+          <Button href="/blog" className="px-4 py-2">
+            &larr; Takaisin blogiin
+          </Button>
         </div>
       </main>
     </div>
-  )
+  );
 }
 
 export async function generateStaticParams() {
   // provide fallback list of slugs for static generation; keep it simple
-  const query = `*[_type == "post" && defined(slug.current)]{ "slug": slug.current }`
-  const slugs: { slug: string }[] = await client.fetch(query)
-  return slugs.map((s) => ({ slug: s.slug }))
+  const query = `*[_type == "post" && defined(slug.current)]{ "slug": slug.current }`;
+  const slugs: { slug: string }[] = await client.fetch(query);
+  return slugs.map((s) => ({ slug: s.slug }));
 }

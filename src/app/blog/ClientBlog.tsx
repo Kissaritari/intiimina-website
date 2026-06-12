@@ -50,7 +50,7 @@ export default function ClientBlog({ posts }: { posts: Post[] }) {
             <button
               key={cat}
               onClick={() => toggleFilter(cat)}
-              className={`text-xs px-3 py-1 rounded-full border ${active ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-700"}`}
+              className={`text-xs cursor-pointer px-3 py-1 rounded-full border ${active ? "bg-badge-selected text-text border-primary" : "bg-badge text-text border-secondary"}`}
             >
               {cat}
             </button>
@@ -59,7 +59,7 @@ export default function ClientBlog({ posts }: { posts: Post[] }) {
         {filters.length > 0 && (
           <button
             onClick={() => setFilters([])}
-            className="text-xs px-3 py-1 rounded-full border bg-red-50 text-red-600"
+            className="text-xs px-3 py-1 rounded-full border bg-accent-light text-accent border-accent"
           >
             Tyhjennä suodattimet
           </button>
@@ -90,11 +90,11 @@ export default function ClientBlog({ posts }: { posts: Post[] }) {
               >
                 Lue
               </Button>
-              <div className="mt-2 flex flex-wrap gap-1 p-2 rounded-lg bg-gray-50 border border-gray-200">
+              <div className="mt-2 flex flex-wrap gap-1 p-2 rounded-lg border border-secondary">
                 {p.categories?.map((cat) => (
                   <div
                     key={cat.title}
-                    className="bg-gray-200 text-gray-700 text-xs px-2 py-0.5 rounded-full"
+                    className="bg-secondary text-text text-xs px-2 py-0.5 rounded-full"
                   >
                     {cat.title}
                   </div>
@@ -107,3 +107,5 @@ export default function ClientBlog({ posts }: { posts: Post[] }) {
     </div>
   );
 }
+
+

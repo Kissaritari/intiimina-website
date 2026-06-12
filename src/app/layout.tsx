@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, IBM_Plex_Sans_Condensed } from "next/font/google";
+import { Montserrat, Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
+  variable: "--font-heading",
   subsets: ["latin"],
+  weight: ["700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const ibmPlexSansCondensed = IBM_Plex_Sans_Condensed({
-  variable: "--font-ibm-plex-sans-condensed",
-  weight: ["400", "700"],
+const cormorant = Cormorant_Garamond({
+  variable: "--font-accent",
   subsets: ["latin"],
+  style: ["italic"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -86,7 +89,7 @@ export default function RootLayout({
   return (
     <html lang="fi">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexSansCondensed.variable} antialiased`}
+        className={`${montserrat.variable} ${inter.variable} ${cormorant.variable} antialiased`}
       >
         {children}
         <BackToTop />
@@ -95,3 +98,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+

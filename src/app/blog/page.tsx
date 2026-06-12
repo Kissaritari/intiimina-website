@@ -44,12 +44,12 @@ export default async function Blog() {
   const Posts = await getPosts();
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
+    <div className="min-h-screen flex flex-col  bg-background text-text">
       <Header />
       <main className="max-w-4xl mx-auto py-16 px-4">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Blogi</h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-text mb-8">
             Ajatuksia ja oivalluksia hyvinvoinnista, moninaisuudesta ja
             rohkeudesta.
           </p>
@@ -61,3 +61,7 @@ export default async function Blog() {
     </div>
   );
 }
+
+
+
+

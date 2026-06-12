@@ -43,39 +43,38 @@ export default async function Home() {
   const contactIntro = page?.contactIntro || null;
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
+    <div className="min-h-screen flex flex-col  bg-background text-text overflow-clip">
       {/* Hero Section */}
-      <div className="relative h-[80vh] gradient-primary">
-        <div className="absolute inset-0 flex-center">
-          <div className="container-wide text-center px-4">
-            <h1 className="heading-primary mb-6">
+      <div className="relative h-[80vh]  bg-linear-to-r from-[#168385] via-highlight to-[#e9865e]">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-full max-w-4xl mx-auto text-center px-4">
+            <h1 className="heading-primary md:text-6xl text-5xl font-bold tracking-tight mb-6">
               {heroTitle || <>Intiiminä koulutus ja konsultaatio</>}
             </h1>
-            <p className="text-body-large max-w-2xl mx-auto mb-8 text-shadow-2xs">
+            <p className="md:text-xl text-2xl max-w-2xl mx-auto mb-8 text-shadow-2xs">
               {heroText || <>Rohkeasti, lempeästi ja inhimillisesti.</>}
             </p>
             <Button href="#contact">Ota yhteyttä</Button>
           </div>
         </div>
       </div>
-
       <Header />
 
-      <main className="flex-1 flex-col-center section-padding section-spacing">
+      <main className="flex-1 flex flex-col items-center section-padding section-spacing">
         {/* About Section */}
         {/*
         <section
           id="about"
           className="container-narrow text-center flex-col gap-4"
         >
-          <h3 className="heading-tertiary">Tietoa</h3>
+          <h3 className="text-2xl font-bold mb-2">Tietoa</h3>
           <p className="text-body">Laajempi tietojuttu, ehkä kuva / kuvia.</p>
         </section>
       */}
 
         {/* Services Section */}
-        <section id="services" className="container-wide flex-col gap-6">
-          <h3 className="heading-tertiary text-center ">Palvelut</h3>
+        <section id="services" className="w-full max-w-4xl mx-auto flex-col gap-6 mt-12">
+          <h3 className="text-2xl font-bold mb-2 text-center ">Palvelut</h3>
           <Carousel opts={{ loop: true }} className="w-full max-w-4xl mx-auto">
             <CarouselContent>
               {services.length > 0 ? (
@@ -83,7 +82,7 @@ export default async function Home() {
                   <CarouselItem key={idx}>
                     <Card title={s.title}>
                       {s.description ? (
-                        <div className="text-gray-600">
+                        <div className="text-text">
                           {renderPortableText(s.description)}
                         </div>
                       ) : null}
@@ -94,7 +93,7 @@ export default async function Home() {
                 <>
                   <CarouselItem>
                     <Card title="Konsultointi">
-                      <p className="text-gray-600">
+                      <p className="text-text">
                         Tarjoan räätälöityjä konsultointipalveluita eri
                         toimialoille.
                       </p>
@@ -102,7 +101,7 @@ export default async function Home() {
                   </CarouselItem>
                   <CarouselItem>
                     <Card title="Koulutus">
-                      <p className="text-gray-600">
+                      <p className="text-text">
                         Tarjoan monipuolisia koulutuspalveluita organisaatioille
                         ja yksityishenkilöille.
                       </p>
@@ -110,14 +109,14 @@ export default async function Home() {
                   </CarouselItem>
                   <CarouselItem>
                     <Card title="Seksuaalineuvonta">
-                      <p className="text-gray-600">
+                      <p className="text-text">
                         Ammattimaista seksuaalineuvontaa yksilöille ja pareille.
                       </p>
                     </Card>
                   </CarouselItem>
                   <CarouselItem>
                     <Card title="Työnohjaus">
-                      <p className="text-gray-600">
+                      <p className="text-text">
                         Työnohjauspalvelut ammattilaisille ja työyhteisöille.
                       </p>
                     </Card>
@@ -125,14 +124,14 @@ export default async function Home() {
                 </>
               )}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious disabled={false}/>
+            <CarouselNext disabled={false}/>
           </Carousel>
         </section>
 
         {/* Blog Section Link */}
         <section className="container-narrow text-center mt-8">
-          <h3 className="heading-tertiary">Blogi</h3>
+          <h3 className="text-2xl font-bold mb-2">Blogi</h3>
           <p className="text-body mb-4">
             {blogIntro || "Lue ajatuksiani ja tarinoita työstäni."}
           </p>
@@ -144,8 +143,8 @@ export default async function Home() {
           id="contact"
           className="container-narrow text-center mt-16 flex-col gap-4"
         >
-          <h3 className="heading-tertiary">Ota yhteyttä</h3>
-          <p className="text-body">
+          <h3 className="text-2xl font-bold mb-2">Ota yhteyttä</h3>
+          <p className="text-body mb-4">
             {contactIntro ||
               "Haluatko keskustella palveluistani? Ota yhteyttä."}
           </p>
@@ -156,7 +155,7 @@ export default async function Home() {
       </main>
       {/* Memberships / Logos */}
       <section className="container-narrow text-center mt-12 flex-col gap-4">
-        <h3 className="heading-tertiary">Jäsenyydet</h3>
+        <h3 className="text-2xl font-bold mb-2">Jäsenyydet</h3>
 
         <div className="flex items-center justify-center mt-4">
           {/* Use next/image for optimized loading; image lives in /public */}
@@ -165,7 +164,7 @@ export default async function Home() {
             alt="Yrittäjät Logo"
             width={240}
             height={80}
-            className="object-contain"
+            className="object-contain my-2"
           />
         </div>
       </section>

@@ -1,15 +1,17 @@
-@import "tailwindcss";
-@import "./colors.css";
-@import "../styles/common.css";
+﻿@import "tailwindcss";
 
+@theme {
+  --color-primary: #0f5d5e;
+  --color-primary-hover: #09393a;
+  --color-secondary: #aebca7;
+  --color-accent: #c46d4a;
+  --color-background: #f8f4ee;
+  --color-text: #2a2a2a;
+  --color-highlight: #cbb38a;
+  --color-badge: #e0e0e0;
+  --color-badge-selected: #cbb38a;
 
-@theme inline {
-  --font-sans: var(--font-geist-sans);
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-accent: "Cormorant Garamond", serif;
 }
-
-.header-font {
-  font-family: var(--font-ibm-plex-sans-condensed);
-  font-weight: 700;
-}
-
-
