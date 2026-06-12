@@ -68,7 +68,7 @@ export default async function PostPage({ params }: Props) {
 
   if (!post) {
     return (
-      <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
+      <div className="min-h-screen flex flex-col  bg-ivory text-graphite">
         <Header />
         <main className="max-w-4xl mx-auto py-16 px-4">
           <h1 className="text-2xl font-semibold">Post not found</h1>
@@ -78,7 +78,7 @@ export default async function PostPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
+    <div className="min-h-screen flex flex-col  bg-ivory text-graphite">
       <Header />
       <main className="max-w-4xl mx-auto py-16 px-4">
       
@@ -117,3 +117,5 @@ export async function generateStaticParams() {
   const slugs: { slug: string }[] = await client.fetch(query)
   return slugs.map((s) => ({ slug: s.slug }))
 }
+
+

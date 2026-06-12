@@ -1,38 +1,52 @@
 :root {
-  --color-purple: #b4a4f0;
-  --color-lime: #97d77b;
-  --color-blue: #c1e5f9;
-  --color-pink: #f787c9;
+  --color-petrol: #0F5D5E;
+  --color-terracotta: #C46D4A;
+  --color-ivory: #F8F4EE;
+  --color-sage: #AEBCA7;
+  --color-graphite: #2A2A2A;
+  --color-goldbeige: #CBB38A;
 }
 
 .text-brand {
-  color: var(--color-pink);
+  color: var(--color-terracotta);
 }
 
-.bg-purple {
-  background-color: var(--color-purple);
+.bg-petrol {
+  background-color: var(--color-petrol);
 }
 
-.bg-lime {
-  background-color: var(--color-lime);
+.bg-terracotta {
+  background-color: var(--color-terracotta);
 }
 
-.bg-blue {
-  background-color: var(--color-blue);
+.bg-ivory {
+  background-color: var(--color-ivory);
 }
 
-.text-purple {
-  color: var(--color-purple);
+.bg-sage {
+  background-color: var(--color-sage);
 }
 
-.text-lime {
-  color: var(--color-lime);
+.bg-goldbeige {
+  background-color: var(--color-goldbeige);
 }
 
-.text-blue {
-  color: var(--color-blue);
+.text-petrol {
+  color: var(--color-petrol);
 }
 
-.text-pink {
-  color: var(--color-pink);
+.text-terracotta {
+  color: var(--color-terracotta);
+}
+
+.text-ivory {
+  color: var(--color-ivory);
+}
+
+.text-sage {
+  color: var(--color-sage);
+}
+
+.text-goldbeige {
+  color: var(--color-goldbeige);
 }

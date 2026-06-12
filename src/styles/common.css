@@ -19,28 +19,28 @@
 
   /* Typography */
   .heading-primary {
-    @apply text-5xl sm:text-7xl font-bold tracking-tight text-gray-800;
+    @apply text-5xl sm:text-7xl font-bold tracking-tight text-[var(--color-graphite)];
   }
 
   .heading-secondary {
-    @apply text-4xl sm:text-5xl font-extrabold mb-2;
+    @apply text-4xl sm:text-5xl font-extrabold mb-2 text-[var(--color-graphite)];
   }
 
   .heading-tertiary {
-    @apply text-2xl font-bold mb-2 text-gray-800;
+    @apply text-2xl font-bold mb-2 text-[var(--color-graphite)];
   }
 
   .text-body {
-    @apply text-gray-700;
+    @apply text-[var(--color-graphite)];
   }
 
   .text-body-large {
-    @apply text-xl sm:text-2xl text-gray-700;
+    @apply text-xl sm:text-2xl text-[var(--color-graphite)];
   }
 
   /* Backgrounds */
   .gradient-primary {
-    @apply bg-gradient-to-r from-[#b4a4f0] via-[#c1e5f9] to-[#97d77b];
+    @apply bg-gradient-to-r from-[var(--color-petrol)] via-[var(--color-sage)] to-[var(--color-goldbeige)];
   }
 
   /* Common patterns */

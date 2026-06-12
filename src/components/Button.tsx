@@ -10,7 +10,7 @@ interface ButtonProps {
 }
 
 export default function Button({ href, onClick, children, className = '', external = false }: ButtonProps) {
-  const baseStyles = "inline-block bg-[#b4a4f0] text-black px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:opacity-90 hover:shadow-xl transition-all text-shadow-sm";
+  const baseStyles = "inline-block bg-[var(--color-petrol)] text-[var(--color-ivory)] px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:bg-[var(--color-terracotta)] hover:text-[var(--color-ivory)] hover:opacity-90 hover:shadow-xl transition-all text-shadow-sm";
   const combinedStyles = `${baseStyles} ${className}`;
 
   if (external && href) {

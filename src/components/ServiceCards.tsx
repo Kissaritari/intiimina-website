@@ -38,7 +38,7 @@ export default function ServiceCards({ cards }: Props) {
               className="min-w-[260px] md:min-w-[320px] lg:min-w-[380px] xl:min-w-[420px] flex-shrink-0 "
             >
               <Card
-                className="bg-gray-100 "
+                className="bg-[var(--color-ivory)] "
                 title={c.title || ""}
                 description={
                   c.description ? (

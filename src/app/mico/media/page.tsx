@@ -8,7 +8,7 @@ export default async function CV() {
   const content = page?.content;
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
+    <div className="min-h-screen flex flex-col  bg-[var(--color-ivory)] text-[var(--color-graphite)]">
       <Header />
       <main className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold mb-6">{title}</h1>
@@ -19,3 +19,6 @@ export default async function CV() {
     </div>
   );
 }
+
+
+

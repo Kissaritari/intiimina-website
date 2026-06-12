@@ -43,7 +43,7 @@ export default async function Home() {
   const contactIntro = page?.contactIntro || null;
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-white text-gray-900">
+    <div className="min-h-screen flex flex-col  bg-ivory text-graphite">
       {/* Hero Section */}
       <div className="relative h-[80vh] gradient-primary">
         <div className="absolute inset-0 flex-center">
@@ -172,3 +172,6 @@ export default async function Home() {
     </div>
   );
 }
+
+
+

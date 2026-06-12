@@ -16,7 +16,7 @@ export default function RichText({ value, align = 'justify' }: RichTextProps) {
       h3: ({ children }) => <h3 className="text-2xl font-semibold my-4">{children}</h3>,
       h4: ({ children }) => <h4 className="text-xl font-semibold my-3">{children}</h4>,
       blockquote: ({ children }) => (
-        <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4 text-gray-600">
+        <blockquote className="border-l-4 border-[var(--color-sage)] pl-4 italic my-4 text-[var(--color-graphite)] bg-[rgba(203,179,138,0.12)]">
           {children}
         </blockquote>
       ),
@@ -66,7 +66,7 @@ export default function RichText({ value, align = 'justify' }: RichTextProps) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 underline"
+            className="text-[var(--color-petrol)] underline"
           >
             {children}
           </a>
