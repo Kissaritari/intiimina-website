@@ -17,14 +17,15 @@ export type CardItem = {
 
 type Props = {
   cards?: CardItem[];
+  vertical?: boolean;
 };
 
-export default function ServiceCards({ cards }: Props) {
+export default function ServiceCards({ cards, vertical }: Props) {
   if (!cards || cards.length === 0) return null;
 
   return (
     <div className="mt-12">
-      <div className="flex gap-6 pb-6 md:gap-8 overflow-x-scroll scroll-px-4">
+      <div className={`flex gap-6 pb-6 md:gap-8 overflow-x-scroll scroll-px-4 ${vertical ? "flex-col" : ""}`}>
         {cards.map((c) => {
           const key =
             c._key || c.title || Math.random().toString(36).slice(2, 9);
