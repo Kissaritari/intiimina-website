@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import ServiceCards from "@/components/ServiceCards";
 import RichText from "@/lib/RichText";
 import { getPageBySlug } from "@/sanity/lib/getPage";
 
@@ -14,6 +15,7 @@ export default async function References() {
         <h1 className="text-4xl font-bold mb-6">{title}</h1>
         <div className="prose max-w-none">
           <RichText value={content} />
+           <ServiceCards cards={page?.cards} vertical={true} />
         </div>
       </main>
     </div>
